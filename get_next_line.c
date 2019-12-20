@@ -6,23 +6,11 @@
 /*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:10:45 by rcabezas          #+#    #+#             */
-/*   Updated: 2019/12/18 18:01:15 by rcabezas         ###   ########.fr       */
+/*   Updated: 2019/12/19 08:11:22 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-size_t			ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (*(str + i) != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
 
 static void		strdel(char **str)
 {

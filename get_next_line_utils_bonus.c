@@ -6,39 +6,42 @@
 /*   By: rcabezas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:57:40 by rcabezas          #+#    #+#             */
-/*   Updated: 2019/12/18 17:45:58 by rcabezas         ###   ########.fr       */
+/*   Updated: 2019/12/19 09:34:46 by rcabezas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+size_t	ft_strlen(const char *str)
 {
-	char		*p;
-	const char	*q;
+	int	i;
 
-	p = dst;
-	q = src;
-	if ((int)p == '\0' && (int)q == '\0')
-		return (dst);
-	else
+	i = 0;
+	while (*(str + i) != '\0')
 	{
-		while (n--)
-			*p++ = *q++;
-		return (dst);
+		i++;
 	}
+	return (i);
 }
 
 char	*ft_strdup(const char *s1)
 {
 	size_t	len;
-	void	*new;
+	char	*new;
+	char	*str1;
+	size_t	i;
 
-	len = ft_strlen(s1) + 1;
-	new = (char *)malloc(len);
-	if (new == 0)
-		return (0);
-	ft_memcpy(new, s1, len);
+	str1 = (char *)s1;
+	len = ft_strlen(s1);
+	i = 0;
+	if (!(new = (char *)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	while (str1[i] != '\0')
+	{
+		new[i] = str1[i];
+		i++;
+	}
+	new[len] = '\0';
 	return (new);
 }
 
@@ -50,17 +53,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!(s1 && s2))
 		return (0);
-	a = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!(a = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
 		return (0);
 	i = 0;
 	j = 0;
-	while (i < ft_strlen(s1))
+	while (s1[i] != '\0')
 	{
 		a[i] = s1[i];
 		i++;
 	}
-	while (j < ft_strlen(s2))
+	while (s2[j] != '\0')
 	{
 		a[i] = s2[j];
 		i++;
